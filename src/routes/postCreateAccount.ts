@@ -8,7 +8,7 @@ postCreateAccountRouter.get(
   "/account",
   bodyParser.json(),
   (req: express.Request<Account>, res) => {
-    const account = req.params;
+    const { givenName, surname, hashedPassword, permissions } = req.params;
     //   getLesson(title).send((err, data) =>
     //     err ? res.send(err) : res.send(data.Item)
     //   );
