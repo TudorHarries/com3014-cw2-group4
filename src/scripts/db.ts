@@ -21,14 +21,6 @@ const connectToCollection = async (
   return collection;
 };
 
-const createCollection = async (dbName: string, collectionName: string) => {
-  const client = await connectToClient();
-
-  client.db(dbName).createCollection(collectionName);
-
-  await client.close();
-};
-
 export const createAccount = async (
   dbName: string,
   collectionName: string,
