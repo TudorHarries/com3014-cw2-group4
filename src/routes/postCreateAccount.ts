@@ -11,7 +11,7 @@ postCreateAccountRouter.post(
   "/account",
   bodyParser.json(),
   async (req: express.Request<Account>, res) => {
-    const account = req.params;
+    const account = req.body;
     const result = await createAccount(dbName, collectionName, account);
     res.send(result.acknowledged);
   }

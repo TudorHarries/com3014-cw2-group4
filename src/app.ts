@@ -1,4 +1,5 @@
 import express from "express";
+import { getAccountRouter } from "./routes/getAccount";
 import { postCreateAccountRouter } from "./routes/postCreateAccount";
 
 const app = express();
@@ -9,9 +10,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("", postCreateAccountRouter);
+app.use("", getAccountRouter);
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
-
-
