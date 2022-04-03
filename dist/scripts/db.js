@@ -21,11 +21,6 @@ const connectToCollection = (dbName, collectionName, client) => __awaiter(void 0
     const collection = client.db(dbName).collection(collectionName);
     return collection;
 });
-const createCollection = (dbName, collectionName) => __awaiter(void 0, void 0, void 0, function* () {
-    const client = yield connectToClient();
-    client.db(dbName).createCollection(collectionName);
-    yield client.close();
-});
 const createAccount = (dbName, collectionName, account) => __awaiter(void 0, void 0, void 0, function* () {
     const client = yield connectToClient();
     const collection = yield connectToCollection(dbName, collectionName, client);

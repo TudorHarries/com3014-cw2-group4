@@ -22,6 +22,6 @@ exports.getAccountRouter = express_1.default.Router();
 exports.getAccountRouter.get("/account/:email", body_parser_1.default.json(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.params;
     const result = yield (0, db_1.getAccount)(dbName, collectionName, email);
-    res.send(result);
+    result == undefined ? res.send("undefined") : res.send(result);
 }));
 //# sourceMappingURL=getAccount.js.map
