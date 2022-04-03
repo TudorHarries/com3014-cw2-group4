@@ -1,5 +1,7 @@
 import { MongoClient } from "mongodb";
 import { Account } from "../types/Account";
+
+// Remember to change the password below! Should be stored securely in the env
 const url =
   "mongodb+srv://admin:<password>@cluster0.fnojx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 

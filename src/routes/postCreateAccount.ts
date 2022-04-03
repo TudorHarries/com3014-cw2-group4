@@ -7,7 +7,7 @@ const dbName = "test";
 const collectionName = "accounts";
 export const postCreateAccountRouter = express.Router();
 
-postCreateAccountRouter.get(
+postCreateAccountRouter.post(
   "/account",
   bodyParser.json(),
   async (req: express.Request<Account>, res) => {
