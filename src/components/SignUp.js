@@ -1,6 +1,6 @@
 import React from "react";
 
-function Account() {
+function SignUp() {
   const state = {
     givenName: undefined,
     surname: undefined,
@@ -8,7 +8,7 @@ function Account() {
     password: undefined,
   };
   const handleSubmit = (event) => {
-    // TODO Call API instead of this alert
+    // TODO Call API instead of this alert to actually create the account, then log the user inmn
     console.log("Creating account for email " + state.email);
     event.preventDefault();
   };
@@ -74,4 +74,4 @@ function Account() {
   );
 }
 
-export default Account;
+export default SignUp;
