@@ -1,12 +1,14 @@
 import React from "react";
+import { useState } from "react";
 
 function SignUp() {
-  const state = {
-    givenName: undefined,
-    surname: undefined,
-    email: undefined,
-    password: undefined,
-  };
+  const [state, setState] = useState({
+    givenName: "",
+    surname: "",
+    email: "",
+    password: "",
+  });
+
   const handleSubmit = (event) => {
     // TODO Call API instead of this alert to actually create the account, then log the user inmn
     console.log("Creating account for email " + state.email);
@@ -14,16 +16,36 @@ function SignUp() {
   };
 
   const handleGivenNameChange = (event) => {
-    state.givenName = event.target.value;
+    setState({
+      givenName: event.target.value,
+      password: state.password,
+      surname: state.surname,
+      email: state.email,
+    });
   };
   const handleSurnameChange = (event) => {
-    state.surname = event.target.value;
+    setState({
+      surname: event.target.value,
+      password: state.password,
+      givenName: state.givenName,
+      email: state.email,
+    });
   };
   const handleEmailChange = (event) => {
-    state.email = event.target.value;
+    setState({
+      email: event.target.value,
+      password: state.password,
+      surname: state.surname,
+      givenName: state.givenName,
+    });
   };
   const handlePasswordChange = (event) => {
-    state.password = event.target.value;
+    setState({
+      password: event.target.value,
+      givenName: state.givenName,
+      surname: state.surname,
+      email: state.email,
+    });
   };
 
   return (

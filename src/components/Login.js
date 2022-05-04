@@ -1,10 +1,12 @@
 import React from "react";
+import { useState } from "react";
 
 function Login() {
-  const state = {
-    email: undefined,
-    password: undefined,
-  };
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleSubmit = (event) => {
     // TODO Call API instead of this alert to actually create the account, then log the user in
     console.log("Signing in for " + state.email);
@@ -12,10 +14,10 @@ function Login() {
   };
 
   const handleEmailChange = (event) => {
-    state.email = event.target.value;
+    setState({ email: event.target.value, password: state.password });
   };
   const handlePasswordChange = (event) => {
-    state.password = event.target.value;
+    setState({ password: event.target.value, email: state.email });
   };
 
   return (
