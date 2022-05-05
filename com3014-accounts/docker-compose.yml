@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  accounts:
+    container_name: accounts
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - 3005:8080
