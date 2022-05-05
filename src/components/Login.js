@@ -11,7 +11,7 @@ function Login(props) {
   const handleSubmit = (event) => {
     // TODO Call API instead of this alert to actually log the user in.
     // Only change logged in state if the login was successful!
-    props.changeLoggedInState();
+    props.login();
     console.log("Signing in for " + state.email);
     event.preventDefault();
   };
@@ -54,7 +54,7 @@ function Login(props) {
 }
 
 Login.propTypes = {
-  changeLoggedInState: PropTypes.func,
+  login: PropTypes.func,
 };
 
 export default Login;

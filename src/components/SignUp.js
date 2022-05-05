@@ -13,7 +13,7 @@ function SignUp(props) {
   const handleSubmit = (event) => {
     // TODO Call API instead of this alert to actually create the account, then log the user in
     // Only change logged in state if the login was successful!
-    props.changeLoggedInState();
+    props.login();
     console.log("Creating account for email " + state.email);
     event.preventDefault();
   };
@@ -100,7 +100,7 @@ function SignUp(props) {
 }
 
 SignUp.propTypes = {
-  changeLoggedInState: PropTypes.func,
+  login: PropTypes.func,
 };
 
 export default SignUp;

@@ -15,9 +15,12 @@ function App() {
     loggedIn: false,
   });
 
-  const changeLoggedInState = () => {
-    console.log("changing logged in state");
-    setState({ loggedIn: !state.loggedIn });
+  const login = () => {
+    setState({ loggedIn: true });
+  };
+
+  const logout = () => {
+    setState({ loggedIn: false });
   };
 
   return (
@@ -29,24 +32,25 @@ function App() {
         <Question />
         <Quiz />
         <Quizzes />
-        <li>
-          <Link to="/signup">Sign up</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        {!state.loggedIn ? (
+          <div>
+            <li>
+              <Link to="/signup">Sign up</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </div>
+        ) : (
+          <button onClick={logout}>Logout</button>
+        )}
+
         <QuizPlayer />
       </div>
 
       <Routes>
-        <Route
-          path="signup"
-          element={<SignUp changeLoggedInState={changeLoggedInState} />}
-        />
-        <Route
-          path="login"
-          element={<Login changeLoggedInState={changeLoggedInState} />}
-        />
+        <Route path="signup" element={<SignUp login={login} />} />
+        <Route path="login" element={<Login login={login} />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
