@@ -2,6 +2,7 @@ import express from "express";
 import { getAccountRouter } from "./routes/getAccount";
 import { postCreateAccountRouter } from "./routes/postCreateAccount";
 import { postLoginRouter } from "./routes/postLogin";
+import { putPermissionsRouter } from "./routes/putPermissions";
 
 const app = express();
 const port = 8080;
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 app.use("", postCreateAccountRouter);
 app.use("", getAccountRouter);
 app.use("", postLoginRouter);
+app.use("", putPermissionsRouter);
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);

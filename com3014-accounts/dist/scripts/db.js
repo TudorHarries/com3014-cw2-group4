@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAccount = exports.createAccount = void 0;
+exports.getAccount = exports.updatePermissions = exports.createAccount = void 0;
 const mongodb_1 = require("mongodb");
 // Remember to change the password below! Should be stored securely in the env
 const url = "mongodb+srv://admin:lWG62484a1t7NjDU@cluster0.fnojx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -29,6 +29,14 @@ const createAccount = (dbName, collectionName, account) => __awaiter(void 0, voi
     return result;
 });
 exports.createAccount = createAccount;
+const updatePermissions = (dbName, collectionName, email, permissions) => __awaiter(void 0, void 0, void 0, function* () {
+    const client = yield connectToClient();
+    const collection = yield connectToCollection(dbName, collectionName, client);
+    const result = yield collection.updateOne({ email }, { $set: { permissions } });
+    yield client.close();
+    return result;
+});
+exports.updatePermissions = updatePermissions;
 const getAccount = (dbName, collectionName, email) => __awaiter(void 0, void 0, void 0, function* () {
     const client = yield connectToClient();
     const collection = yield connectToCollection(dbName, collectionName, client);

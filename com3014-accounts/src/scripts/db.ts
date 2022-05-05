@@ -36,6 +36,25 @@ export const createAccount = async (
   return result;
 };
 
+export const updatePermissions = async (
+  dbName: string,
+  collectionName: string,
+  email: Pick<Account, "email">,
+  permissions: Pick<Account, "permissions">
+) => {
+  const client = await connectToClient();
+  const collection = await connectToCollection(dbName, collectionName, client);
+
+  const result = await collection.updateOne(
+    { email },
+    { $set: { permissions } }
+  );
+
+  await client.close();
+
+  return result;
+};
+
 export const getAccount = async (
   dbName: string,
   collectionName: string,
