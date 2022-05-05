@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ".:/usr/src/appp"
+      - ".:/usr/src/app"
       - "/usr/src/app/node_modules"
     ports:
       - 3001:3000
