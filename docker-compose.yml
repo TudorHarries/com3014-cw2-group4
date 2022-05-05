@@ -1,15 +1,14 @@
-version: '3.7'
+version: "3.7"
 
 services:
-
-  sample:
+  frontend:
     container_name: frontend
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - '.:/usr/src/appp'
-      - '/usr/src/app/node_modules'
+      - ".:/usr/src/appp"
+      - "/usr/src/app/node_modules"
     ports:
       - 3001:3000
     environment:
