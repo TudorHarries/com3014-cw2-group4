@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 
-function SignUp() {
+function SignUp(props) {
   const [state, setState] = useState({
     givenName: "",
     surname: "",
@@ -10,7 +11,9 @@ function SignUp() {
   });
 
   const handleSubmit = (event) => {
-    // TODO Call API instead of this alert to actually create the account, then log the user inmn
+    // TODO Call API instead of this alert to actually create the account, then log the user in
+    // Only change logged in state if the login was successful!
+    props.changeLoggedInState();
     console.log("Creating account for email " + state.email);
     event.preventDefault();
   };
@@ -95,5 +98,9 @@ function SignUp() {
     </>
   );
 }
+
+SignUp.propTypes = {
+  changeLoggedInState: PropTypes.func,
+};
 
 export default SignUp;

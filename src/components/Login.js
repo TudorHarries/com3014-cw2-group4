@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 
-function Login() {
+function Login(props) {
   const [state, setState] = useState({
     email: "",
     password: "",
   });
 
   const handleSubmit = (event) => {
-    // TODO Call API instead of this alert to actually create the account, then log the user in
+    // TODO Call API instead of this alert to actually log the user in.
+    // Only change logged in state if the login was successful!
+    props.changeLoggedInState();
     console.log("Signing in for " + state.email);
     event.preventDefault();
   };
@@ -49,5 +52,9 @@ function Login() {
     </>
   );
 }
+
+Login.propTypes = {
+  changeLoggedInState: PropTypes.func,
+};
 
 export default Login;

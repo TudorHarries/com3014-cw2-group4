@@ -6,10 +6,20 @@ import SignUp from "./components/SignUp";
 import QuizPlayer from "./components/QuizPlayer";
 import Home from "./components/Home";
 import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 
 function App() {
+  const [state, setState] = useState({
+    loggedIn: false,
+  });
+
+  const changeLoggedInState = () => {
+    console.log("changing logged in state");
+    setState({ loggedIn: !state.loggedIn });
+  };
+
   return (
     <Router>
       <li>
@@ -29,8 +39,14 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<Login />} />
+        <Route
+          path="signup"
+          element={<SignUp changeLoggedInState={changeLoggedInState} />}
+        />
+        <Route
+          path="login"
+          element={<Login changeLoggedInState={changeLoggedInState} />}
+        />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
