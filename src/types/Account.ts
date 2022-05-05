@@ -4,6 +4,6 @@ export type Account = {
   givenName: string;
   surname: string;
   email: string;
-  hashedPassword: string;
+  password: string;
   permissions: Array<Permission>;
 };

@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { Account } from "../types/Account";
 import { createAccount } from "../scripts/db";
+import { hash } from "bcryptjs";
 
 const dbName = "test";
 const collectionName = "accounts";
@@ -12,7 +13,11 @@ postCreateAccountRouter.post(
   bodyParser.json(),
   async (req: express.Request<Account>, res) => {
     const account = req.body;
-    const result = await createAccount(dbName, collectionName, account);
+    const hashedPassword = await hash(account.password, 10);
+    const result = await createAccount(dbName, collectionName, {
+      ...account,
+      password: hashedPassword,
+    });
     res.send(result.acknowledged);
   }
 );

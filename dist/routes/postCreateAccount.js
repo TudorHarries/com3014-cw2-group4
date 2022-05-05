@@ -16,12 +16,14 @@ exports.postCreateAccountRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const db_1 = require("../scripts/db");
+const bcryptjs_1 = require("bcryptjs");
 const dbName = "test";
 const collectionName = "accounts";
 exports.postCreateAccountRouter = express_1.default.Router();
 exports.postCreateAccountRouter.post("/account", body_parser_1.default.json(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const account = req.body;
-    const result = yield (0, db_1.createAccount)(dbName, collectionName, account);
+    const hashedPassword = yield (0, bcryptjs_1.hash)(account.password, 10);
+    const result = yield (0, db_1.createAccount)(dbName, collectionName, Object.assign(Object.assign({}, account), { password: hashedPassword }));
     res.send(result.acknowledged);
 }));
 //# sourceMappingURL=postCreateAccount.js.map

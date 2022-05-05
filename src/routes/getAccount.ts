@@ -8,7 +8,7 @@ export const getAccountRouter = express.Router();
 
 getAccountRouter.get("/account/:email", bodyParser.json(), async (req, res) => {
   const { email } = req.params;
-  const result = await getAccount(dbName, collectionName, email);
+  const account = await getAccount(dbName, collectionName, email);
 
-  res.send(result);
+  res.send(account);
 });
