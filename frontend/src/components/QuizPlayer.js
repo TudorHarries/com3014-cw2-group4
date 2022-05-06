@@ -28,13 +28,11 @@ function QuizPlayer() {
     que_count: 0,
     que_numb: 1,
     userScore: 0,
-    counter: undefined,
-    counterLine: undefined,
-    widthValue: 0,
     isQuizActive: false,
     userCorrect: false,
     userIncorrect: false,
     nextQuestion: false,
+    showResult: false,
   });
 
   const handleStartQuiz = () => {
@@ -82,10 +80,26 @@ function QuizPlayer() {
         userCorrect: false,
         userIncorrect: false,
         isQuizActive: false,
+        showResult: true,
       });
       // clear timer
-      // show results
     }
+  };
+
+  const handleRestartQuiz = () => {
+    setState({
+      timeValue: 15,
+      que_count: 0,
+      que_numb: 1,
+      userScore: 0,
+      isQuizActive: true,
+      userCorrect: false,
+      userIncorrect: false,
+      nextQuestion: false,
+      showResult: false,
+    });
+
+    // Start timer
   };
 
   const correctStyle = {
@@ -100,9 +114,11 @@ function QuizPlayer() {
 
   return (
     <div>
-      <div>
-        <button onClick={handleStartQuiz}>Start Quiz</button>
-      </div>
+      {!state.isQuizActive && !state.showResult ? (
+        <div>
+          <button onClick={handleStartQuiz}>Start Quiz</button>
+        </div>
+      ) : null}
 
       {state.isQuizActive ? (
         <div>
@@ -116,7 +132,7 @@ function QuizPlayer() {
           <section>
             <div>
               <p>
-                {questions[state.que_count].numb} .
+                {questions[state.que_count].numb}.{" "}
                 {questions[state.que_count].question}
               </p>
             </div>
@@ -154,6 +170,22 @@ function QuizPlayer() {
               <button onClick={handleNextButton}>Next Question</button>
             ) : null}
           </footer>
+        </div>
+      ) : null}
+
+      {state.showResult ? (
+        <div>
+          {state.userScore > 3 ? (
+            <p>Congrats!</p>
+          ) : state.userScore > 1 ? (
+            <p>Try again!</p>
+          ) : (
+            <p>Better luck next time!</p>
+          )}
+          <p>
+            You got {state.userScore} out of {questions.length}
+          </p>
+          <button onClick={handleRestartQuiz}>Restart quiz</button>
         </div>
       ) : null}
     </div>
