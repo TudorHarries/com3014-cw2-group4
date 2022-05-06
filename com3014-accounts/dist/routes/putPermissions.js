@@ -21,7 +21,6 @@ const collectionName = "accounts";
 exports.putPermissionsRouter = express_1.default.Router();
 exports.putPermissionsRouter.put("/permissions", body_parser_1.default.json(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { permissions, email } = req.body;
-    console.log(req.body);
     const result = yield (0, db_1.updatePermissions)(dbName, collectionName, email, permissions);
     res.send(result);
 }));
