@@ -32,6 +32,9 @@ function QuizPlayer() {
     counterLine: undefined,
     widthValue: 0,
     isQuizActive: false,
+    userCorrect: false,
+    userIncorrect: false,
+    nextQuestion: false,
   });
 
   const handleStartQuiz = () => {
@@ -39,9 +42,62 @@ function QuizPlayer() {
     // For the timer, might be worth using something like https://www.npmjs.com/package/react-timer-hook
   };
 
-  const selectOption = () => {};
+  const selectOption = (event) => {
+    if (event.target.value === questions[state.que_count].answer) {
+      setState({
+        ...state,
+        userScore: state.userScore + 1,
+        userCorrect: true,
+        userIncorrect: false,
+        nextQuestion: true,
+      });
+    } else {
+      setState({
+        ...state,
+        userCorrect: false,
+        userIncorrect: true,
+        nextQuestion: true,
+      });
+    }
+  };
 
-  // Return your HTML here
+  const handleNextButton = () => {
+    setState({ ...state });
+
+    if (state.que_count < questions.length - 1) {
+      setState({
+        ...state,
+        nextQuestion: false,
+        userCorrect: false,
+        userIncorrect: false,
+        que_count: state.que_count + 1,
+        que_numb: state.que_numb + 1,
+      });
+      // Clear timer
+      // start timer
+    } else {
+      setState({
+        ...state,
+        nextQuestion: false,
+        userCorrect: false,
+        userIncorrect: false,
+        isQuizActive: false,
+      });
+      // clear timer
+      // show results
+    }
+  };
+
+  const correctStyle = {
+    backgroundColor: "green",
+    color: "white",
+  };
+
+  const incorrectStyle = {
+    backgroundColor: "red",
+    color: "white",
+  };
+
   return (
     <div>
       <div>
@@ -66,7 +122,22 @@ function QuizPlayer() {
             </div>
             <div>
               {questions[state.que_count].options.map((o) => (
-                <button key={o} value={o} onClick={selectOption}>
+                <button
+                  style={
+                    questions[state.que_count].answer === o
+                      ? state.userCorrect === true &&
+                        state.userIncorrect === false
+                        ? correctStyle
+                        : state.userIncorrect == true
+                        ? incorrectStyle
+                        : null
+                      : null
+                  }
+                  key={o}
+                  value={o}
+                  onClick={selectOption}
+                  disabled={state.nextQuestion}
+                >
                   {o}
                 </button>
               ))}
@@ -79,7 +150,9 @@ function QuizPlayer() {
                 {state.que_numb} of {questions.length}
               </p>
             </div>
-            <button>Next Question</button>
+            {state.nextQuestion ? (
+              <button onClick={handleNextButton}>Next Question</button>
+            ) : null}
           </footer>
         </div>
       ) : null}
