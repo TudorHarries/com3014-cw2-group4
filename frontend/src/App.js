@@ -16,11 +16,11 @@ function App() {
   });
 
   const login = () => {
-    setState({ loggedIn: true });
+    setState({ ...state, loggedIn: true });
   };
 
   const logout = () => {
-    setState({ loggedIn: false });
+    setState({ ...state, loggedIn: false });
   };
 
   return (
@@ -35,6 +35,9 @@ function App() {
         {!state.loggedIn ? (
           <div>
             <li>
+              <Link to="/quizPlayer">Play quiz</Link>
+            </li>
+            <li>
               <Link to="/signup">Sign up</Link>
             </li>
             <li>
@@ -44,11 +47,10 @@ function App() {
         ) : (
           <button onClick={logout}>Logout</button>
         )}
-
-        <QuizPlayer />
       </div>
 
       <Routes>
+        <Route path="quizPlayer" element={<QuizPlayer />} />
         <Route path="signup" element={<SignUp login={login} />} />
         <Route path="login" element={<Login login={login} />} />
         <Route path="/" element={<Home />} />
