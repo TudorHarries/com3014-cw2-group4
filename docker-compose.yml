@@ -23,3 +23,15 @@ services:
       - ./question:/usr/src/app
     ports:
       - 1337:1337
+
+  template_db:
+    image: postgres:11.4-alpine
+  template_web:
+    build: ./quiz-template
+    command: bundle exec rails s -p 3002 -b '0.0.0.0'
+    volumes:
+      - ./quiz-template:/testing_docker
+    ports:
+      - "3002:3002"
+    depends_on:
+      - template_db
