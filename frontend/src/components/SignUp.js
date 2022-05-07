@@ -4,18 +4,27 @@ import { PropTypes } from "prop-types";
 
 function SignUp(props) {
   const [state, setState] = useState({
+    loggedIn: "not",
     givenName: "",
     surname: "",
     email: "",
     password: "",
   });
 
-  const handleSubmit = (event) => {
-    // TODO Call API instead of this alert to actually create the account, then log the user in
-    // Only change logged in state if the login was successful!
-    props.login();
-    console.log("Creating account for email " + state.email);
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const body = { ...state, permissions: [{ name: "test" }] };
+
+    const result = await fetch("http://localhost:8080/account/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    (await result.json()) === true ? props.login() : console.log("fail");
   };
 
   const handleGivenNameChange = (event) => {
@@ -55,6 +64,7 @@ function SignUp(props) {
     <>
       <h1>Create account</h1>
       <h3>Enter your details</h3>
+      <p>{state.loggedIn}</p>
 
       <form onSubmit={handleSubmit}>
         <label>
