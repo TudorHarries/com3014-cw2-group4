@@ -8,12 +8,19 @@ function Login(props) {
     password: "",
   });
 
-  const handleSubmit = (event) => {
-    // TODO Call API instead of this alert to actually log the user in.
-    // Only change logged in state if the login was successful!
-    props.login();
-    console.log("Signing in for " + state.email);
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const result = await fetch("http://localhost:8080/login/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(state),
+    });
+
+    (await result.json()) === true ? props.login() : console.log("fail");
   };
 
   const handleEmailChange = (event) => {

@@ -1,22 +1,30 @@
 import React from "react";
 import { useState } from "react";
 import { PropTypes } from "prop-types";
-import axios from "axios";
 
 function SignUp(props) {
   const [state, setState] = useState({
+    loggedIn: "not",
     givenName: "",
     surname: "",
     email: "",
     password: "",
   });
 
-  const handleSubmit = async () => {
-    const result = await axios.post("http://localhost:8080/account/", {
-      ...state,
-      permissions: [{ name: "test" }],
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const body = { ...state, permissions: [{ name: "test" }] };
+
+    const result = await fetch("http://localhost:8080/account/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
-    result.data === true ? props.login() : console.log("fail");
+
+    (await result.json()) === true ? props.login() : console.log("fail");
   };
 
   const handleGivenNameChange = (event) => {
@@ -56,6 +64,7 @@ function SignUp(props) {
     <>
       <h1>Create account</h1>
       <h3>Enter your details</h3>
+      <p>{state.loggedIn}</p>
 
       <form onSubmit={handleSubmit}>
         <label>
