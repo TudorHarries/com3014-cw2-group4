@@ -4,7 +4,6 @@ import { PropTypes } from "prop-types";
 
 function SignUp(props) {
   const [state, setState] = useState({
-    loggedIn: "not",
     givenName: "",
     surname: "",
     email: "",
@@ -13,7 +12,16 @@ function SignUp(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const body = { ...state, permissions: [{ name: "test" }] };
+    const body = {
+      ...state,
+      permissions: [
+        { name: "create-question" },
+        { name: "create-quiz" },
+        { name: "delete-question" },
+        { name: "delete-quiz" },
+        { name: "play-quiz" },
+      ],
+    };
 
     const result = await fetch("http://localhost:8080/account/", {
       method: "POST",
@@ -64,7 +72,6 @@ function SignUp(props) {
     <>
       <h1>Create account</h1>
       <h3>Enter your details</h3>
-      <p>{state.loggedIn}</p>
 
       <form onSubmit={handleSubmit}>
         <label>
