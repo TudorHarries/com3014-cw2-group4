@@ -14,3 +14,10 @@ services:
       - ./com3014-accounts:/usr/src/app
     ports:
       - 8080:8080
+
+  questions:
+    build: ./question
+    volumes:
+      - ./question:/usr/src/app
+    ports:
+      - 1337:1337

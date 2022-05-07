@@ -1,7 +1,7 @@
 import "./App.css";
 import Question from "./components/Question";
-import Quiz from "./components/Quiz";
-import Quizzes from "./components/Quizzes";
+//import Quiz from "./components/Quiz";
+//import Quizzes from "./components/Quizzes";
 import SignUp from "./components/SignUp";
 import QuizPlayer from "./components/QuizPlayer";
 import Home from "./components/Home";
@@ -29,14 +29,9 @@ function App() {
         <Link to="/">Home</Link>
       </li>
       <div>
-        <Question />
-        <Quiz />
-        <Quizzes />
         {!state.loggedIn ? (
           <div>
-            <li>
-              <Link to="/quizPlayer">Play quiz</Link>
-            </li>
+
             <li>
               <Link to="/signup">Sign up</Link>
             </li>
@@ -45,12 +40,23 @@ function App() {
             </li>
           </div>
         ) : (
-          <button onClick={logout}>Logout</button>
+          <div>
+            <li>
+              <Link to="/quizPlayer">Play quiz</Link>
+            </li>
+            <li>
+              <Link to="/question">create question</Link>
+            </li>
+
+            <button onClick={logout}>Logout</button>
+
+          </div>
         )}
       </div>
 
       <Routes>
         <Route path="quizPlayer" element={<QuizPlayer />} />
+        <Route path="question" element={<Question />} />
         <Route path="signup" element={<SignUp login={login} />} />
         <Route path="login" element={<Login login={login} />} />
         <Route path="/" element={<Home />} />

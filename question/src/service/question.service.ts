@@ -2,14 +2,6 @@
 //import questionModel, { questionDocument } from "../model/question.model";
 import { connectToCollection, connectToClient } from "../utils/connect"
 
-//export async function createQuestion(input: DocumentDefinition<questionDocument>) {
-//  try {
-//     return await questionModel.create(input)
-// }
-// catch (e) {
-//    throw new Error(e as string);
-// }
-//}
 
 type Question = {
     prompt_text: string,
