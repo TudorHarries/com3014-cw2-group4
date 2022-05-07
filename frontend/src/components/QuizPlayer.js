@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // creating an array and passing the number, questions, options, and answers
 const questions = [
@@ -24,6 +24,7 @@ const questions = [
 ];
 function QuizPlayer() {
   const [state, setState] = useState({
+    startTime: 0,
     timeValue: 15,
     que_count: 0,
     que_numb: 1,
@@ -35,9 +36,27 @@ function QuizPlayer() {
     showResult: false,
   });
 
+  const calculateTimeLeft = () => {
+    const difference = state.startTime - +new Date();
+    let timeLeft = Math.floor((difference / 1000) % 60);
+
+    return timeLeft;
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setState({ ...state, timeValue: calculateTimeLeft() });
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
   const handleStartQuiz = () => {
-    setState({ ...state, isQuizActive: true });
-    // For the timer, might be worth using something like https://www.npmjs.com/package/react-timer-hook
+    setState({
+      ...state,
+      isQuizActive: true,
+      startTime: +new Date().setSeconds(+new Date().getSeconds() + 15),
+    });
   };
 
   const selectOption = (event) => {
@@ -70,6 +89,8 @@ function QuizPlayer() {
         userIncorrect: false,
         que_count: state.que_count + 1,
         que_numb: state.que_numb + 1,
+        timeValue: 15,
+        startTime: +new Date().setSeconds(+new Date().getSeconds() + 15),
       });
       // Clear timer
       // start timer
@@ -97,6 +118,7 @@ function QuizPlayer() {
       userIncorrect: false,
       nextQuestion: false,
       showResult: false,
+      startTime: +new Date().setSeconds(+new Date().getSeconds() + 15),
     });
 
     // Start timer
@@ -126,7 +148,11 @@ function QuizPlayer() {
             <div>Quiz Creator</div>
             <div>
               <div>Time Left</div>
-              <div>15</div>
+              {state.timeValue > 0 ? (
+                <div>{state.timeValue}</div>
+              ) : (
+                <div>Time up</div>
+              )}
             </div>
           </header>
           <section>
@@ -141,8 +167,9 @@ function QuizPlayer() {
                 <button
                   style={
                     questions[state.que_count].answer === o
-                      ? state.userCorrect === true &&
-                        state.userIncorrect === false
+                      ? (state.userCorrect === true &&
+                          state.userIncorrect === false) ||
+                        state.timeValue < 0
                         ? correctStyle
                         : state.userIncorrect == true
                         ? incorrectStyle
@@ -152,7 +179,7 @@ function QuizPlayer() {
                   key={o}
                   value={o}
                   onClick={selectOption}
-                  disabled={state.nextQuestion}
+                  disabled={state.nextQuestion || state.timeValue <= 0}
                 >
                   {o}
                 </button>
