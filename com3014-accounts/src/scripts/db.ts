@@ -1,12 +1,8 @@
 import { MongoClient } from "mongodb";
 import { Account } from "../types/Account";
 
-// Remember to change the password below! Should be stored securely in the env
-const url =
-  "mongodb+srv://admin:lWG62484a1t7NjDU@cluster0.fnojx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
 const connectToClient = async () => {
-  const client: MongoClient = new MongoClient(url);
+  const client: MongoClient = new MongoClient(process.env.DB_URL);
 
   return await client.connect();
 };
