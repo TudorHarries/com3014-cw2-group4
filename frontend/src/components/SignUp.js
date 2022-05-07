@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { PropTypes } from "prop-types";
+import axios from "axios";
 
 function SignUp(props) {
   const [state, setState] = useState({
@@ -10,12 +11,12 @@ function SignUp(props) {
     password: "",
   });
 
-  const handleSubmit = (event) => {
-    // TODO Call API instead of this alert to actually create the account, then log the user in
-    // Only change logged in state if the login was successful!
-    props.login();
-    console.log("Creating account for email " + state.email);
-    event.preventDefault();
+  const handleSubmit = async () => {
+    const result = await axios.post("http://localhost:8080/account/", {
+      ...state,
+      permissions: [{ name: "test" }],
+    });
+    result.data === true ? props.login() : console.log("fail");
   };
 
   const handleGivenNameChange = (event) => {
