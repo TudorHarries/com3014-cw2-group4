@@ -15,4 +15,4 @@ export const createQuestionSchema = object({
 });
 
 
-export type createQyestionInput = TypeOf<typeof createQuestionSchema>;
+export type createQuestionInput = TypeOf<typeof createQuestionSchema>;
