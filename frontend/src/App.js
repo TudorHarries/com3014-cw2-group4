@@ -1,7 +1,5 @@
 import "./App.css";
 import Question from "./components/Question";
-//import Quiz from "./components/Quiz";
-//import Quizzes from "./components/Quizzes";
 import SignUp from "./components/SignUp";
 import QuizPlayer from "./components/QuizPlayer";
 import Home from "./components/Home";
@@ -31,7 +29,6 @@ function App() {
       <div>
         {!state.loggedIn ? (
           <div>
-
             <li>
               <Link to="/signup">Sign up</Link>
             </li>
@@ -49,7 +46,6 @@ function App() {
             </li>
 
             <button onClick={logout}>Logout</button>
-
           </div>
         )}
       </div>

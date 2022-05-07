@@ -10,12 +10,29 @@ function SignUp(props) {
     password: "",
   });
 
-  const handleSubmit = (event) => {
-    // TODO Call API instead of this alert to actually create the account, then log the user in
-    // Only change logged in state if the login was successful!
-    props.login();
-    console.log("Creating account for email " + state.email);
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const body = {
+      ...state,
+      permissions: [
+        { name: "create-question" },
+        { name: "create-quiz" },
+        { name: "delete-question" },
+        { name: "delete-quiz" },
+        { name: "play-quiz" },
+      ],
+    };
+
+    const result = await fetch("http://localhost:8080/account/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    (await result.json()) === true ? props.login() : console.log("fail");
   };
 
   const handleGivenNameChange = (event) => {

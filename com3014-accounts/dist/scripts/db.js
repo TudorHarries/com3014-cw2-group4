@@ -11,10 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAccount = exports.updatePermissions = exports.createAccount = void 0;
 const mongodb_1 = require("mongodb");
-// Remember to change the password below! Should be stored securely in the env
-const url = "mongodb+srv://admin:lWG62484a1t7NjDU@cluster0.fnojx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const connectToClient = () => __awaiter(void 0, void 0, void 0, function* () {
-    const client = new mongodb_1.MongoClient(url);
+    console.log(process.env.DB_URL);
+    const client = new mongodb_1.MongoClient(process.env.DB_URL);
     return yield client.connect();
 });
 const connectToCollection = (dbName, collectionName, client) => __awaiter(void 0, void 0, void 0, function* () {
