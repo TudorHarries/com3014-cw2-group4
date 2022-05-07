@@ -16,3 +16,10 @@ services:
       - 8080:8080
     env_file:
       - ./com3014-accounts/.env
+
+  questions:
+    build: ./question
+    volumes:
+      - ./question:/usr/src/app
+    ports:
+      - 1337:1337
