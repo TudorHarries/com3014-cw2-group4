@@ -1,0 +1,11 @@
+{:uriI"èfile://app/assets/javascripts/importmap.json.erb?type=application/json+ruby&id=fb8a3b72fdbb559801f5de8bb387b249eeabef92c83d29a560100d41ab9e09fc:ET:load_pathI"app/assets/javascripts;T:filenameI".app/assets/javascripts/importmap.json.erb;T:	nameI"importmap;T:logical_pathI"importmap.json.erb;T:content_typeI"application/json+ruby;T:sourceI"∏{
+  "imports": { 
+    "turbo": "<%= asset_path "turbo" %>",
+    <%= importmap_list_with_stimulus_from "app/assets/javascripts/controllers", "app/assets/javascripts/libraries" %>
+  }
+}
+;T:metadata{
+:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Jprocessors:type=application/json+ruby&file_type=application/json+ruby;TTI"<file-digest://app/assets/javascripts/importmap.json.erb;TTF:charsetI"
+utf-8;F:digest"%Ãw°FÎø_!†◊3T⁄ËN£=·(`µ◊?–!‹ÊSä:lengthi∏:environment_versionI"1.0;T:dependencies_digest"%∂"OΩ*¯?Ûq≥•›N8*Ø~]gNlÇ+syu4:idI"Efb8a3b72fdbb559801f5de8bb387b249eeabef92c83d29a560100d41ab9e09fc;F
