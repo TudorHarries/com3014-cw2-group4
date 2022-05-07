@@ -1,0 +1,454 @@
+Started GET "/" for 127.0.0.1 at 2022-05-06 14:03:46 +0100
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.6) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateQuiz (20201028195546)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "quizzes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "quiz_id" varchar, "order" integer, "question" varchar, "option_a" varchar, "option_b" varchar, "option_c" varchar, "option_d" varchar, "correct_answer" varchar)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "attempts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "quiz_id" varchar, "taker" varchar, "number_correct" integer, "number_incorrect" integer)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201028195546"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-06 13:04:07.385556"], ["updated_at", "2022-05-06 13:04:07.385556"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-05-06 14:04:15 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuizController#menu as HTML
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 19ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Quiz with 'id'=1):
+  
+app/controllers/quiz_controller.rb:9:in `load_data'
+app/controllers/quiz_controller.rb:24:in `menu'
+Started GET "/" for 127.0.0.1 at 2022-05-06 14:05:16 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/quizzes/1" for 127.0.0.1 at 2022-05-06 14:05:16 +0100
+Started GET "/quiz" for 127.0.0.1 at 2022-05-06 14:05:16 +0100
+Processing by QuizController#menu as HTML
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 23ms (ActiveRecord: 0.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Quiz with 'id'=1):
+  
+app/controllers/quiz_controller.rb:9:in `load_data'
+app/controllers/quiz_controller.rb:24:in `menu'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/quiz"):
+  
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/quizzes/1"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/quiz" for 127.0.0.1 at 2022-05-06 14:05:16 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/quiz"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/quiz/start" for 127.0.0.1 at 2022-05-06 14:05:24 +0100
+Started GET "/quiz/start" for 127.0.0.1 at 2022-05-06 14:05:24 +0100
+Processing by QuizController#start as HTML
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Quiz with 'id'=1):
+  
+app/controllers/quiz_controller.rb:9:in `load_data'
+app/controllers/quiz_controller.rb:28:in `start'
+Processing by QuizController#start as HTML
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 22ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Quiz with 'id'=1):
+  
+app/controllers/quiz_controller.rb:9:in `load_data'
+app/controllers/quiz_controller.rb:28:in `start'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "quizzes" ("id", "name") VALUES (?, ?)[0m  [["id", 1], ["name", "The New Years Trivia Challenge"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "order", "question", "option_a", "option_b", "option_c", "option_d", "correct_answer") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["quiz_id", "1"], ["order", 1], ["question", "Which investment is shown in the graph?"], ["option_a", "Amazon"], ["option_b", "Bitcoin"], ["option_c", "Ethereum"], ["option_d", "Tesla"], ["correct_answer", "B"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuiz Load (0.8ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "order", "question", "option_a", "option_b", "option_c", "option_d", "correct_answer") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["quiz_id", "1"], ["order", 2], ["question", "In the graph, how many paths connect node A to node B that never go up?"], ["option_a", "24"], ["option_b", "27"], ["option_c", "35"], ["option_d", "37"], ["correct_answer", "C"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "order", "question", "option_a", "option_b", "option_c", "option_d", "correct_answer") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["quiz_id", "1"], ["order", 3], ["question", "On average, humans blink 20 times per minute. How many times do they blink when looking at a computer?"], ["option_a", "7"], ["option_b", "12"], ["option_c", "20"], ["option_d", "23"], ["correct_answer", "A"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "order", "question", "option_a", "option_b", "option_c", "option_d", "correct_answer") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["quiz_id", "1"], ["order", 4], ["question", "Which planet in our solar system is shown here?"], ["option_a", "Jupiter"], ["option_b", "Mars"], ["option_c", "Mercury"], ["option_d", "Venus"], ["correct_answer", "A"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("quiz_id", "order", "question", "option_a", "option_b", "option_c", "option_d", "correct_answer") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["quiz_id", "1"], ["order", 5], ["question", "Which city is shown here?"], ["option_a", "Boston, MA USA"], ["option_b", "Shenzen, China"], ["option_c", "Tokyo, Japan"], ["option_d", "Toronto, Canada"], ["correct_answer", "C"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/quiz/start" for 127.0.0.1 at 2022-05-06 14:08:19 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuizController#start as HTML
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (11.8ms)
+  Rendered layouts/_mmheader.html.erb (2.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 3500ms (Views: 3441.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/custom.self-3cb633c080c03cc90fd488d741a4c444dd74d8aae7067bfe618750f593999e16.css?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/application.self-7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/HeaderGraphic-8f3691bb4405326b489d83adb79263afdfedac4fd370958899dc07b55b261e6c.png" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/rails-ujs.self-8944eaf3f9a2615ce7c830a810ed630e296633063af8bb7441d5702fbe3ea597.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/application.self-af04b226fd7202dfc532ce7aedb95a0128277937e90d3b3a3d35e1cce9e16886.css?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2022-05-06 14:08:22 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/quiz/start" for 127.0.0.1 at 2022-05-06 14:08:33 +0100
+Processing by QuizController#start as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xHE378ED+TplohD7byPfuoD6wrEJfqY+NhzTp/OIqaVsiPmKOLINyq6vw/V2rdxa9cW+x02VuO5TT/dV76beOA==", "attempt"=>{"taker"=>"Alex", "quiz_id"=>"1", "number_correct"=>"0", "current_question_number"=>"1", "phase"=>"begin"}, "commit"=>"Start the Quiz"}
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (8.4ms)
+  Rendered layouts/_mmheader.html.erb (0.7ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 43ms (Views: 39.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/Question1-9e2ae42a078dceda19ce18ab3564ee01e6e733e00e161d3b30e95d63ae4bf267.png" for 127.0.0.1 at 2022-05-06 14:08:34 +0100
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:09:05 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyfwvxVQgywJlh+G0p3ZHkKM2Hd4Pf6I1/B1CbGbJDIr3j7a7OF33MKbzIjLE9r+N7OkATzW4Fiyo1H7rbVTrw==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"0", "taker"=>"Alex", "current_question_number"=>"1", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_mmheader.html.erb (2.1ms)
+  Rendered layouts/_mmfooter.html.erb (0.3ms)
+Completed 200 OK in 39ms (Views: 37.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/Question2-818dd84d7e13399b2dd0930dbf8cb69ad1e895e989667124ae4fcdc80413fc9f.png" for 127.0.0.1 at 2022-05-06 14:09:05 +0100
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:10:32 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyfwvxVQgywJlh+G0p3ZHkKM2Hd4Pf6I1/B1CbGbJDIr3j7a7OF33MKbzIjLE9r+N7OkATzW4Fiyo1H7rbVTrw==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"0", "taker"=>"Alex", "current_question_number"=>"1", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (142.2ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.3ms)
+Completed 200 OK in 363ms (Views: 316.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:11:01 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyfwvxVQgywJlh+G0p3ZHkKM2Hd4Pf6I1/B1CbGbJDIr3j7a7OF33MKbzIjLE9r+N7OkATzW4Fiyo1H7rbVTrw==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"0", "taker"=>"Alex", "current_question_number"=>"1", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 41ms (Views: 37.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:11:11 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyfwvxVQgywJlh+G0p3ZHkKM2Hd4Pf6I1/B1CbGbJDIr3j7a7OF33MKbzIjLE9r+N7OkATzW4Fiyo1H7rbVTrw==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"0", "taker"=>"Alex", "current_question_number"=>"1", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.8ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.9ms)
+Completed 200 OK in 46ms (Views: 41.0ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:11:14 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyfwvxVQgywJlh+G0p3ZHkKM2Hd4Pf6I1/B1CbGbJDIr3j7a7OF33MKbzIjLE9r+N7OkATzW4Fiyo1H7rbVTrw==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"0", "taker"=>"Alex", "current_question_number"=>"1", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.4ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_mmheader.html.erb (0.2ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 71ms (Views: 65.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:11:56 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gyfwvxVQgywJlh+G0p3ZHkKM2Hd4Pf6I1/B1CbGbJDIr3j7a7OF33MKbzIjLE9r+N7OkATzW4Fiyo1H7rbVTrw==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"0", "taker"=>"Alex", "current_question_number"=>"1", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.3ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_mmheader.html.erb (0.4ms)
+  Rendered layouts/_mmfooter.html.erb (0.4ms)
+Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:12:11 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+0pZlY5EK/hIrIMKScJEOWuDnMi3gmQmAnZK3nQ7a7tTs5fwd/XfCIOhUARQTEfZHrzgvvNpevZnJW4saBUcJg==", "attempt"=>{"answer"=>"B", "quiz_id"=>"1", "number_correct"=>"1", "taker"=>"Alex", "current_question_number"=>"2", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_mmheader.html.erb (0.7ms)
+  Rendered layouts/_mmfooter.html.erb (0.4ms)
+Completed 200 OK in 63ms (Views: 60.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/Question3-607e0cdefb00fe0637541b40b453112c144da257abca2d823055059a3a74335f.png" for 127.0.0.1 at 2022-05-06 14:12:11 +0100
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:12:21 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y410j9pO+6LzN04v8TEuecbBjVQOvOcY0VR0vAnmJ2ZjdLrqI/8PUjg6nSHovy2Zs/7xIkpX+ci0B1BOFchQ+w==", "attempt"=>{"answer"=>"C", "quiz_id"=>"1", "number_correct"=>"1", "taker"=>"Alex", "current_question_number"=>"3", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (8.6ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/Question4-fcb5ef67faeb84e09930e3a03e13e08a943236d89742b42128e994d7e545454d.png" for 127.0.0.1 at 2022-05-06 14:12:21 +0100
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:12:23 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i8aX1U0L/YWYkP76OiLZL+2A+sqA7smg5/Pds+lQVAUjP1mwtLoJdVOdLfQjrNrPmL+GvMQF13CCoPlB9X4jmA==", "attempt"=>{"answer"=>"C", "quiz_id"=>"1", "number_correct"=>"1", "taker"=>"Alex", "current_question_number"=>"4", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.3ms)
+Completed 200 OK in 33ms (Views: 31.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/Question5-eba62e293645be97434501f944571aa56ecdca549b062a35b9015508cd73e54b.png" for 127.0.0.1 at 2022-05-06 14:12:23 +0100
+Started POST "/quiz/answer" for 127.0.0.1 at 2022-05-06 14:12:24 +0100
+Processing by QuizController#answer as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZiQhzwlgRSToEwN5Lm+weeX5PmuLuNCICCjnkXOEIprO3e+q8NGx1CMe0Hc34bOZkMZCHc9Tzlhte8Njb6pVBw==", "attempt"=>{"answer"=>"C", "quiz_id"=>"1", "number_correct"=>"1", "taker"=>"Alex", "current_question_number"=>"5", "phase"=>"name"}, "commit"=>"Submit your Answer"}
+  [1m[36mQuiz Load (0.3ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_mmheader.html.erb (0.2ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 26ms (Views: 23.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/quiz/menu" for 127.0.0.1 at 2022-05-06 14:12:26 +0100
+Processing by QuizController#menu as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xg1+sqGoQSNm0zELEcC3CG4QF9b1VO/029oLdFy5jg1u9LDXWBm1063e4gUITrToGy9roLG/8SS+iS+GQJf5kA==", "attempt"=>{"quiz_id"=>"1", "number_correct"=>"2", "taker"=>"Alex", "current_question_number"=>"6", "phase"=>"quiz"}, "commit"=>"Go back to the main menu"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/menu.html.erb within layouts/application
+  Rendered quiz/menu.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_mmheader.html.erb (0.2ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/quiz/menu" for 127.0.0.1 at 2022-05-06 14:16:35 +0100
+Processing by QuizController#menu as HTML
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/menu.html.erb within layouts/application
+  Rendered quiz/menu.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.4ms)
+Completed 200 OK in 52ms (Views: 50.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/quiz/index" for 127.0.0.1 at 2022-05-06 14:16:36 +0100
+Processing by QuizController#index as HTML
+  [1m[36mQuiz Load (0.2ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_mmheader.html.erb (0.2ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/quiz/start" for 127.0.0.1 at 2022-05-06 14:16:41 +0100
+Processing by QuizController#start as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cuzpruLzBwl0kUANqaYymCPuncjmZeGaF/l5Wv5oSpbaFSfLG0Lz+b+ckwOwKDF4VtHhvqKO/0pyql2o4kY9Cw==", "attempt"=>{"taker"=>"", "quiz_id"=>"", "number_correct"=>"", "current_question_number"=>"", "phase"=>"begin"}, "commit"=>"Start the Quiz"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_mmheader.html.erb (0.3ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/quiz/start" for 127.0.0.1 at 2022-05-06 14:16:45 +0100
+Processing by QuizController#start as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HkvAd10mr9QqM8WRGYM9fgLj58O8j9+gpBEaF0VwDLu2sg4SpJdbJOE+Fp8ADT6ed9ybtfhkwXDBQj7lWV57Jg==", "attempt"=>{"taker"=>"alex", "quiz_id"=>"1", "number_correct"=>"0", "current_question_number"=>"1", "phase"=>"begin"}, "commit"=>"Start the Quiz"}
+  [1m[36mQuiz Load (0.1ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_mmheader.html.erb (0.2ms)
+  Rendered layouts/_mmfooter.html.erb (0.2ms)
+Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/quiz/start" for 127.0.0.1 at 2022-05-06 14:20:32 +0100
+Processing by QuizController#start as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HkvAd10mr9QqM8WRGYM9fgLj58O8j9+gpBEaF0VwDLu2sg4SpJdbJOE+Fp8ADT6ed9ybtfhkwXDBQj7lWV57Jg==", "attempt"=>{"taker"=>"alex", "quiz_id"=>"1", "number_correct"=>"0", "current_question_number"=>"1", "phase"=>"begin"}, "commit"=>"Start the Quiz"}
+  [1m[36mQuiz Load (0.7ms)[0m  [1m[34mSELECT  "quizzes".* FROM "quizzes" WHERE "quizzes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."quiz_id" = ?[0m  [["quiz_id", "1"]]
+  Rendering quiz/index.html.erb within layouts/application
+  Rendered quiz/index.html.erb within layouts/application (13.2ms)
+  Rendered layouts/_mmheader.html.erb (0.6ms)
+  Rendered layouts/_mmfooter.html.erb (0.4ms)
+Completed 200 OK in 100ms (Views: 85.8ms | ActiveRecord: 1.2ms)
+
+
