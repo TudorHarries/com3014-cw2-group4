@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-import config from 'config';
-import logger from './logger'
+
 import { MongoClient } from "mongodb";
 
 const db = 'mongodb+srv://admin:YgeZjelG7WIizmiY@cluster0.ovcmd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
