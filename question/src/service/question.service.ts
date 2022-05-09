@@ -1,6 +1,6 @@
-//import { DocumentDefinition } from "mongoose";
-//import questionModel, { questionDocument } from "../model/question.model";
+
 import { connectToCollection, connectToClient } from "../utils/connect"
+
 
 
 type Question = {
