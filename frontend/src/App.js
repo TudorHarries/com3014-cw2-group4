@@ -13,10 +13,12 @@ function App() {
     loggedIn: false,
   });
 
+  // We should also store this in localStorage with an expiration so it persists through a refresh
   const login = () => {
     setState({ ...state, loggedIn: true });
   };
 
+  // We should unset the localStorage here
   const logout = () => {
     setState({ ...state, loggedIn: false });
   };
