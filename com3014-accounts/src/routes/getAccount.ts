@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { getAccount } from "../scripts/db";
+import { getAccount } from "../database/db";
 
 const dbName = "test";
 const collectionName = "accounts";

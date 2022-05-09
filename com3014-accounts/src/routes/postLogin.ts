@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { Account } from "../types/Account";
-import { getAccount } from "../scripts/db";
+import { getAccount } from "../database/db";
 import { compare } from "bcryptjs";
 
 const dbName = "test";

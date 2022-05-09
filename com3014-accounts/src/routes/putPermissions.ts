@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { Account } from "../types/Account";
-import { updatePermissions } from "../scripts/db";
+import { updatePermissions } from "../database/db";
 
 const dbName = "test";
 const collectionName = "accounts";
