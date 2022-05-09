@@ -167,11 +167,10 @@ function QuizPlayer() {
                 <button
                   style={
                     questions[state.que_count].answer === o
-                      ? (state.userCorrect === true &&
-                          state.userIncorrect === false) ||
-                        state.timeValue < 0
+                      ? state.userCorrect === true &&
+                        state.userIncorrect === false
                         ? correctStyle
-                        : state.userIncorrect == true
+                        : state.userIncorrect == true || state.timeValue < 0
                         ? incorrectStyle
                         : null
                       : null
